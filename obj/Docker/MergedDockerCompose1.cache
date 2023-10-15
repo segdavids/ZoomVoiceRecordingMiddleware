@@ -1,0 +1,95 @@
+name: dockercompose11152659978346444682
+services:
+  ef_cx_eleveo_recording_runner:
+    environment:
+      'CIM_URL ': ' https://cim-dev.expertflow.com'
+      'DB_DRIVER ': ' Integrated Security=SSPI; persist security info=True;TrustServerCertificate=True;
+        MultipleActiveResultSets=true'
+      'DB_HOST ': ' /verint'
+      DB_NAME: tcp
+      'DB_PASSWORD ': $$R\/C|MPRD@123
+      'DB_PORT ': ' "efuser"'
+      DB_USERNAME: ' 192.168.2.48'
+      'EFCXMIDDLEWAREAPI_URL ': ' https://middlewareapi.com'
+      'ELEVEO_AUTHENTICATION_URL ': ' STATE_CHANNEL'
+      'ELEVEO_PW ': ' pass'
+      'ELEVEO_RECORDERQM_URL ': ' VerintAPICapture'
+      'ELEVEO_USERNAME ': ' "password"'
+      'INTERVAL ': ' "15"'
+      'LOG_PATH ': ' /logs'
+      'TIMEZONE ': ' Africa/Lagos'
+    image: gitimages.expertflow.com/fnb/verint_ftci_stci_connector:2-0-0
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "80"
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      published: "443"
+      protocol: tcp
+  eleveo-efcx-connector-api:
+    build:
+      context: C:\Users\Ajigbotoluwa O.David\source\repos\eleveovr_2_ef-cx
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Eleveo-EFCX-Connector-API
+    container_name: Eleveo-EFCX-Connector-API
+    entrypoint:
+    - tail
+    - -f
+    - /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      'DB_HOST ': ' "10.129.8.12"'
+      'DB_NAME ': ' eleveodb'
+      'DB_PASSWORD ': ' Quewrty!'
+      'DB_PORT ': ' 3306'
+      'DB_USERNAME ': ' elonmusk'
+      'ELEVEO_AUTHENTICATION_URL ': ' "http://192.168.1.237"'
+      'ELEVEO_PW ': ' zoomcallrec123'
+      'ELEVEO_RECORDERQM_URL ': ' "http://192.168.1.237"'
+      'ELEVEO_USERNAME ': ' ccmanager'
+    labels:
+      com.microsoft.visual-studio.project-name: Eleveo-EFCX-Connector-API
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  ""'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    tty: true
+    volumes:
+    - type: bind
+      source: C:\Users\Ajigbotoluwa O.David\vsdbg\vs2017u5
+      target: /remote_debugger
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Ajigbotoluwa O.David\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Ajigbotoluwa O.David\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+networks:
+  default:
+    name: dockercompose11152659978346444682_default

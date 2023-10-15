@@ -1,0 +1,26 @@
+#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+# FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+# WORKDIR /app
+# EXPOSE 80
+# EXPOSE 443
+
+# FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+# WORKDIR /src
+# COPY ["Eleveo-EFCX-Connector-API/Eleveo-EFCX-Connector-API.csproj", "Eleveo-EFCX-Connector-API/"]
+# RUN dotnet restore "Eleveo-EFCX-Connector-API/Eleveo-EFCX-Connector-API.csproj"
+# COPY . .
+# WORKDIR "/src/Eleveo-EFCX-Connector-API"
+# RUN dotnet build "Eleveo-EFCX-Connector-API.csproj" -c Release -o /app/build
+
+# FROM build AS publish
+# RUN dotnet publish "Eleveo-EFCX-Connector-API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+
+# FROM base AS final
+# WORKDIR /app
+# COPY --from=publish /app/publish .
+FROM mcr.microsoft.com/dotnet/runtime:6.0
+RUN mkdir -p /app
+WORKDIR /app 
+COPY bin/Release/net6.0/publish .
+ENTRYPOINT ["dotnet", "Eleveo-EFCX-Connector-API.dll"]

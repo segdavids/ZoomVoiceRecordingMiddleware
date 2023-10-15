@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Eleveo-EFCX-Connector-API.props" />
+</Project>

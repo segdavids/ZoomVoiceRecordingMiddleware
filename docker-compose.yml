@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  eleveo-efcx-connector-api:
+    image: gitimages.expertflow.com/wfm-connectors/eleveovr_2_ef-cx:1-0-0
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      -  DB_DRIVER = Integrated Security=SSPI; persist security info=True;TrustServerCertificate=True; MultipleActiveResultSets=true
+      -  DB_HOST = /verint
+      -  DB_NAME=tcp
+      -  DB_USERNAME= 192.168.2.48
+      -  DB_PASSWORD =$$R\/C|MPRD@123
+      -  DB_PORT = "efuser"
+      -  ELEVEO_USERNAME = "password"
+      -  ELEVEO_PW = pass
+      -  TIMEZONE = Africa/Lagos
+      -  ELEVEO_AUTHENTICATION_URL = STATE_CHANNEL
+      -  ELEVEO_RECORDERQM_URL = VerintAPICapture
+      -  CIM_URL = https://cim-dev.expertflow.com
+      -  EFCXMIDDLEWAREAPI_URL = https://middlewareapi.com
+      -  INTERVAL = "15"
+      -  LOG_PATH = /logs
+
