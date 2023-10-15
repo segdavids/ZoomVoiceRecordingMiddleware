@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  eleveo-efcx-connector-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ELEVEO_AUTHENTICATION_URL = "http://192.168.1.237"
+      - ELEVEO_RECORDERQM_URL = "http://192.168.1.237"
+      - ELEVEO_USERNAME = ccmanager
+      - ELEVEO_PW = zoomcallrec123
+      - DB_HOST = "10.129.8.12"
+      - DB_NAME = eleveodb
+      - DB_USERNAME = elonmusk
+      - DB_PASSWORD = Quewrty!
+      - DB_PORT = 3306
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro

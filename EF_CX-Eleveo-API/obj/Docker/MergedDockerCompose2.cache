@@ -1,0 +1,45 @@
+name: dockercompose16545506257209467869
+services:
+  eleveo-efcx-connector-api:
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:90
+      CIM_URL: https://cim-dev2.expertflow.com
+      DB_DRIVER: Integrated Security=false; persist security info=True;TrustServerCertificate=True;
+        MultipleActiveResultSets=true
+      DB_HOST: 192.168.1.77
+      DB_NAME: EleveoConnector
+      DB_PASSWORD: password
+      DB_PORT: "1433"
+      DB_USERNAME: davidSQL
+      'DOMAINS ': ' http://*:80","https://*:443'
+      EFCXMIDDLEWAREAPI_URL: https://middlewareapi.com
+      ELEVEO_AUTHENTICATION_URL: http://192.168.1.237
+      ELEVEO_PW: zoomcallrec1234
+      ELEVEO_RECORDERQM_URL: http://192.168.1.237
+      ELEVEO_USERNAME: david
+      INTERVAL: '"15"'
+      LOG_PATH: /logs
+      TIMEZONE: Africa/Lagos
+    image: gitimages.expertflow.com/wfm-connectors/eleveovr_2_ef-cx:1-0-1
+    network_mode: host
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\Ajigbotoluwa O.David\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Ajigbotoluwa O.David\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true

@@ -1,0 +1,28 @@
+version: '3.4'
+services:
+  eleveo-efcx-connector-api:
+    image: gitimages.expertflow.com/wfm-connectors/eleveovr_2_ef-cx:1-0-1
+    ports:
+      - "80"
+      - "443"
+    network_mode: host
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:90
+      -  DB_DRIVER=Integrated Security=false; persist security info=True;TrustServerCertificate=True; MultipleActiveResultSets=true
+      -  DB_HOST=192.168.1.77
+      -  DB_NAME=EleveoConnector
+      -  DB_USERNAME=davidSQL
+      -  DB_PASSWORD=password
+      -  DB_PORT=1433
+      -  ELEVEO_USERNAME=david
+      -  ELEVEO_PW=zoomcallrec1234
+      -  TIMEZONE=Africa/Lagos
+      -  ELEVEO_AUTHENTICATION_URL=http://192.168.1.237
+      -  ELEVEO_RECORDERQM_URL=http://192.168.1.237
+      -  CIM_URL=https://cim-dev2.expertflow.com
+      -  EFCXMIDDLEWAREAPI_URL=https://middlewareapi.com
+      -  INTERVAL="15"
+      -  LOG_PATH=/logs
+      -  DOMAINS = http://*:80","https://*:443
+

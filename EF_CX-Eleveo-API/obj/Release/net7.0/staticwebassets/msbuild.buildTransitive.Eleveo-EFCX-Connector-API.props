@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Eleveo-EFCX-Connector-API.props" />
+</Project>

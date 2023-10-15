@@ -1,0 +1,58 @@
+name: dockercompose11152659978346444682
+services:
+  eleveo-efcx-connector-api:
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      'CIM_URL ': ' https://cim-dev.expertflow.com'
+      'DB_DRIVER ': ' Integrated Security=SSPI; persist security info=True;TrustServerCertificate=True;
+        MultipleActiveResultSets=true'
+      'DB_HOST ': ' "10.129.8.12"'
+      DB_NAME: tcp
+      'DB_NAME ': ' eleveodb'
+      'DB_PASSWORD ': ' Quewrty!'
+      'DB_PORT ': ' 3306'
+      DB_USERNAME: ' 192.168.2.48'
+      'DB_USERNAME ': ' elonmusk'
+      'EFCXMIDDLEWAREAPI_URL ': ' https://middlewareapi.com'
+      'ELEVEO_AUTHENTICATION_URL ': ' "http://192.168.1.237"'
+      'ELEVEO_PW ': ' zoomcallrec123'
+      'ELEVEO_RECORDERQM_URL ': ' "http://192.168.1.237"'
+      'ELEVEO_USERNAME ': ' ccmanager'
+      'INTERVAL ': ' "15"'
+      'LOG_PATH ': ' /logs'
+      'TIMEZONE ': ' Africa/Lagos'
+    image: gitimages.expertflow.com/fnb/verint_ftci_stci_connector:2-0-0
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 80
+      published: "80"
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      published: "443"
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\Ajigbotoluwa O.David\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Ajigbotoluwa O.David\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+networks:
+  default:
+    name: dockercompose11152659978346444682_default

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Ajigbotoluwa O.David\source\repos\eleveovr_2_ef-cx\EF_CX-Eleveo-API\bin\Release\net6.0\publish\</_PublishTargetUrl>
+    <History>True|2023-10-15T10:22:29.2983978Z;True|2023-10-15T11:18:22.4347888+01:00;True|2023-10-15T11:03:59.6755802+01:00;False|2023-10-15T11:03:38.0861432+01:00;True|2023-10-15T10:54:25.6213521+01:00;True|2023-10-15T01:10:29.6045394+01:00;True|2023-10-15T01:01:48.7555363+01:00;True|2023-10-15T00:45:36.7738642+01:00;True|2023-10-15T00:31:24.7984704+01:00;True|2023-10-14T21:25:14.9031032+01:00;True|2023-10-14T21:18:51.3276051+01:00;True|2023-10-13T11:00:43.7538343+01:00;True|2023-10-13T10:48:25.6012649+01:00;True|2023-10-13T10:40:56.0349249+01:00;True|2023-10-13T10:33:09.0708838+01:00;True|2023-10-13T09:55:20.4647743+01:00;True|2023-10-13T09:24:08.7510817+01:00;True|2023-10-13T09:23:50.0020495+01:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="docker-compose.yml">
+      <publishTime>10/14/2023 20:09:03</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

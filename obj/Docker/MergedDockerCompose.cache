@@ -1,0 +1,51 @@
+name: dockercompose3149476744715115032
+services:
+  ef_cx_eleveo_recording_runner:
+    build:
+      context: C:\Users\Ajigbotoluwa O.David\source\repos\Eleveo-EFCX-Connector-API\EF_CX-Eleveo-API
+      dockerfile: EF_CX_Eleveo_Recording_Runner/Dockerfile
+    image: efcxeleveorecordingrunner
+    networks:
+      default: null
+  eleveo-efcx-connector-api:
+    build:
+      context: C:\Users\Ajigbotoluwa O.David\source\repos\Eleveo-EFCX-Connector-API\EF_CX-Eleveo-API
+      dockerfile: Eleveo-EFCX-Connector-API/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      'DB_HOST ': ' "10.129.8.12"'
+      'DB_NAME ': ' eleveodb'
+      'DB_PASSWORD ': ' Quewrty!'
+      'DB_PORT ': ' 3306'
+      'DB_USERNAME ': ' elonmusk'
+      'ELEVEO_AUTHENTICATION_URL ': ' "http://192.168.1.237"'
+      'ELEVEO_PW ': ' zoomcallrec123'
+      'ELEVEO_RECORDERQM_URL ': ' "http://192.168.1.237"'
+      'ELEVEO_USERNAME ': ' ccmanager'
+    image: eleveoefcxconnectorapi
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\Ajigbotoluwa O.David\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Ajigbotoluwa O.David\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+networks:
+  default:
+    name: dockercompose3149476744715115032_default

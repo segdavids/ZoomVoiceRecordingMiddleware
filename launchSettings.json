@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "eleveo-efcx-connector-api": "StartDebugging",
+        "ef_cx_eleveo_recording_runner": "StartDebugging"
+      }
+    }
+  }
+}
